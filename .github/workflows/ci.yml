@@ -24,8 +24,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-    # - name: Set up QEMU
-    #   uses: docker/setup-qemu-action@v3
+      # - name: Set up QEMU
+      #   uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -42,7 +42,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }} ${{ env.IMAGE_NAME }}
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             # Tag branches with branch name, but disable for default branch
             type=ref,event=branch,enable=${{ github.ref_name != 'main' }}
@@ -60,4 +60,3 @@ jobs:
 
       - name: Image digest
         run: echo ${{ steps.push.outputs.digest }}
-
