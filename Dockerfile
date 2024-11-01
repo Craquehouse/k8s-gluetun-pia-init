@@ -21,7 +21,7 @@ ENV \
   VPN_INTERFACE=wg0
 
 # Copy any source file(s) required for the action
-COPY entrypoint.sh .
+COPY pia-wg.sh .
 COPY pia-config.sh .
 
 # Configure the container to be run as an executable
