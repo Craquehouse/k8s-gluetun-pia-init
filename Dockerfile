@@ -2,7 +2,7 @@
 FROM alpine:3.20
 
 # Set the working directory inside the container
-WORKDIR /tmp
+WORKDIR /opt/pia-wg
 
 RUN apk --update add jq curl wireguard-tools iproute2
 
@@ -25,4 +25,5 @@ COPY pia-wg.sh .
 COPY pia-config.sh .
 
 # Configure the container to be run as an executable
-ENTRYPOINT ["/tmp/pia-wg.sh -c"]
+ENTRYPOINT ["/opt/pia-wg/pia-wg.sh"]
+CMD ["-c"]
