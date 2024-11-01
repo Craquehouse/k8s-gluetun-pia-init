@@ -10,3 +10,5 @@ export CONFIGDIR="/app/pia-wg"
 ./pia-wg.sh -c
 
 [ -e ${PIA_INTERFACE}.conf ] && cp ${PIA_INTERFACE}.conf /gluetun/wireguard
+
+echo "Successfully generated ${PIA_INTERFACE}.conf and copied to /gluetun/wireguard"

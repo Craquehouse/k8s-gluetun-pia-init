@@ -8,7 +8,13 @@ RUN mkdir -p /app
 WORKDIR /app
 
 # Add required packages
-RUN apk --update add jq curl wireguard-tools iproute2 git
+RUN \
+  apk add --no-cache \
+  jq \
+  curl \
+  wireguard-tools \
+  iproute2 \
+  git
 
 # clone upstream repo
 RUN git clone https://github.com/triffid/pia-wg.git
