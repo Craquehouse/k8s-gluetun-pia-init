@@ -2,20 +2,23 @@
 FROM alpine:3.20
 
 # make config output directory
-RUN mkdir -p /gluetun/wireguard
+RUN mkdir -p /app
 
 # pia scripts get confused if config file isn't here
-WORKDIR /gluetun
+WORKDIR /app
 
 # Add required packages
 RUN apk --update add jq curl wireguard-tools iproute2 git
 
 # clone upstream repo
-RUN git clone https://github.com/triffid/pia-wg.git wireguard
+RUN git clone https://github.com/triffid/pia-wg.git
+
+WORKDIR /app/pia-wg
+
+COPY wrapper.sh .
 
 # Configure the container to be run as an executable
-ENTRYPOINT ["/gluetun/wireguard/pia-wg.sh"]
-CMD ["-c"]
+ENTRYPOINT ["/app/pia-wg/wrapper.sh"]
 
 # Labels
 LABEL \
