@@ -22,6 +22,7 @@ RUN git clone https://github.com/triffid/pia-wg.git
 WORKDIR /app/pia-wg
 
 COPY wrapper.sh .
+COPY pia-wg.sh .
 
 # Configure the container to be run as an executable
 ENTRYPOINT ["/app/pia-wg/wrapper.sh"]
